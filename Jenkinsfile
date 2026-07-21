@@ -1,7 +1,3 @@
-cd ~/devops_learning
-
-# Create the jenkinsfile
-cat > jenkinsfile << 'EOF'
 pipeline {
     agent any
 
@@ -31,9 +27,3 @@ pipeline {
         }
     }
 }
-EOF
-
-# Add, commit, and push to GitHub
-git add jjenkinsfile
-git commit -m "Add jenkinsfile for CI/CD pipeline"
-git push origin main
