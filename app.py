@@ -8,7 +8,7 @@ app = Flask(__name__)
 def home():
     return jsonify({
         "message": "Devops is live!",
-        "version": "1.0.0",
+        "version": "1.0.1",
         "timestamp": datetime.datetime.now().isoformat() 
     })
 
