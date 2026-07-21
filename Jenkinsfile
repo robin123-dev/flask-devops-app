@@ -22,11 +22,10 @@ pipeline {
         stage('Deploy Container') {
             steps {
                 script {
-                    // stop and remove existing container if it exists
-                sh "docker stop my-flask-app || true"
-                sh "docker rm my-flask-app || true"
-                // Run new container
-                sh "docker run -d -p 5000:5000 --name my-flask-app ${DOCKER_IMAGE}:latest"
+                    sh "docker stop ${CONTAINER_NAME} || true"
+                    sh "docker rm ${CONTAINER_NAME} || true"
+                    sh "docker run -d -p 5000:5000 --name ${CONTAINER_NAME} ${DOCKER_IMAGE}:latest"
+                }
             }
         }
     }
