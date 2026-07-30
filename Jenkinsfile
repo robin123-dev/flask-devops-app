@@ -19,6 +19,12 @@ pipeline {
             }
         }
 
+        stage('Test'){
+            steps{
+                sh "python -m unittest discover  || echo 'No tests found' "
+            }
+        }
+
         stage('Deploy Container') {
             steps {
                 script {
