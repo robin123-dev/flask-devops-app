@@ -19,6 +19,15 @@ pipeline {
             }
         }
 
+        stage('Push to Docker'){
+            steps{
+                script {
+                    // Tag the image with the build number
+                    sh "docker tag u3ser/flask-devops-app:latest u3ser/flask-devops-app:${BUILD_NUMBER}"
+                }
+            }
+        }
+
         stage('Test'){
             steps{
                 sh "python -m unittest discover  || echo 'No tests found' "
