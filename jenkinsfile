@@ -29,6 +29,14 @@ pipeline {
                 sh "docker run -d -p 5000:5000 --name ${CONTAINER_NAME} ${DOCKER_IMAGE}:latest"
             }
         }
+        stage('Deploy to kubernetes'
+        steps{
+            scripts{
+
+                sh "kubectl set image deployment/flask-devops-app flask-app=u3ser/flask-devops-app:latest"
+                sh "kubectl rollout status deployment/flask-devops-app"
+            }
+        }
     }
 }
 EOF
