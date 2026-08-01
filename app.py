@@ -1,4 +1,5 @@
 from flask import Flask, jsonify
+from prometheus_flask_exporter import PrometheusMetrics
 import os
 import datetime
 
@@ -30,4 +31,8 @@ def version():
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
+    
+metrics = PrometheusMetrics(app)
+
+metrics.info('app_info', 'Application info', version='1.0.0')
 
